@@ -61,7 +61,7 @@ function WeatherCard({ weather, isLoading, error }) {
         Feels like {weather.feelsLike}°C
       </p>
 
-      <div className="mt-4 grid grid-cols-3 gap-2">
+      <div className="mt-4 grid grid-cols-3 gap-2.5">
         <div className="rounded-2xl bg-white/10 p-3">
           <p className="text-[11px] text-slate-400">Humidity</p>
           <p className="mt-1 text-base font-bold">{weather.humidity}%</p>
