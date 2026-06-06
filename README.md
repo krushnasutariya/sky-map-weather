@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="public/app-icon.png" alt="Sky Map Weather Logo" width="120" />
+</p>
+
 # Sky Map Weather
 
 Sky Map Weather is a modern React weather application that allows users to search for any city or click directly on the map to view live weather information.
@@ -28,7 +32,17 @@ The app shows current weather, local city time, temperature, humidity, wind spee
 
 ## Screenshots
 
-Add screenshots here after uploading images to your repository.
+### Home View
+
+![Home View](public/screenshots/home.png)
+
+### City Search
+
+![City Search](public/screenshots/search-city.png)
+
+### Interactive Weather Map
+
+![Interactive Weather Map](public/screenshots/map-weather.png)
 
 ## Environment Variables
 

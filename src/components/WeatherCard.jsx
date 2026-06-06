@@ -26,7 +26,7 @@ function WeatherCard({ weather, isLoading, error }) {
   }
 
   return (
-    <section className="min-h-0 overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.09] p-5 shadow-2xl backdrop-blur-xl">
+    <seation className="min-h-0 overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.09] p-5 pb-7 shadow-2xl backdrop-blur-xl">
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
           <p className="text-xs font-bold uppercase tracking-[0.35em] text-sky-300">
@@ -92,7 +92,7 @@ function WeatherCard({ weather, isLoading, error }) {
           <p className="mt-1 text-base font-bold">{weather.sunset}</p>
         </div>
       </div>
-    </section>
+    </seation>
   );
 }
 

@@ -127,10 +127,18 @@ function App() {
             <p className="text-xs font-bold uppercase tracking-[0.45em] text-sky-300">
               Live Weather Studio
             </p>
+        
+            <div className="mt-2 flex items-center gap-4">
+              <img
+                src="/app-icon.png"
+                alt="Sky Map Weather logo"
+                className="h-12 w-12 rounded-2xl object-cover shadow-2xl ring-1 ring-white/20 md:h-16 md:w-16"
+              />
 
-            <h1 className="mt-2 text-4xl font-black tracking-tight md:text-6xl">
-              Sky Map Weather
-            </h1>
+              <h1 className="text-4xl font-black tracking-tight md:text-5xl">
+                Sky Map Weather
+              </h1>
+            </div>
 
             <p className="mt-2 max-w-3xl text-sm leading-relaxed text-slate-300">
               Search a city or click on the map to explore live weather,
