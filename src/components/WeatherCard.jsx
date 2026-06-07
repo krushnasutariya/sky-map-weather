@@ -26,7 +26,7 @@ function WeatherCard({ weather, isLoading, error }) {
   }
 
   return (
-    <seation className="min-h-0 overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.09] p-5 pb-7 shadow-2xl backdrop-blur-xl">
+    <section className="min-h-0 overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.09] p-4 pb-5 shadow-2xl backdrop-blur-xl">
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
           <p className="text-xs font-bold uppercase tracking-[0.35em] text-sky-300">
@@ -51,7 +51,7 @@ function WeatherCard({ weather, isLoading, error }) {
       </div>
 
       <div className="mt-4 flex items-end gap-2">
-        <p className="text-6xl font-black leading-none">
+        <p className="text-5xl font-black leading-none">
           {weather.temperature}°
         </p>
         <p className="mb-2 text-xl text-slate-300">C</p>
@@ -61,38 +61,38 @@ function WeatherCard({ weather, isLoading, error }) {
         Feels like {weather.feelsLike}°C
       </p>
 
-      <div className="mt-4 grid grid-cols-3 gap-2.5">
-        <div className="rounded-2xl bg-white/10 p-3">
+      <div className="mt-3 grid grid-cols-3 gap-2">
+        <div className="rounded-2xl bg-white/10 p-2.5">
           <p className="text-[11px] text-slate-400">Humidity</p>
           <p className="mt-1 text-base font-bold">{weather.humidity}%</p>
         </div>
 
-        <div className="rounded-2xl bg-white/10 p-3">
+        <div className="rounded-2xl bg-white/10 p-2.5">
           <p className="text-[11px] text-slate-400">Wind</p>
           <p className="mt-1 text-base font-bold">{weather.windSpeed} km/h</p>
         </div>
 
-        <div className="rounded-2xl bg-white/10 p-3">
+        <div className="rounded-2xl bg-white/10 p-2.5">
           <p className="text-[11px] text-slate-400">Visibility</p>
           <p className="mt-1 text-base font-bold">{weather.visibility} km</p>
         </div>
 
-        <div className="rounded-2xl bg-white/10 p-3">
+        <div className="rounded-2xl bg-white/10 p-2.5">
           <p className="text-[11px] text-slate-400">Pressure</p>
           <p className="mt-1 text-base font-bold">{weather.pressure}</p>
         </div>
 
-        <div className="rounded-2xl bg-white/10 p-3">
+        <div className="rounded-2xl bg-white/10 p-2.5">
           <p className="text-[11px] text-slate-400">Sunrise</p>
           <p className="mt-1 text-base font-bold">{weather.sunrise}</p>
         </div>
 
-        <div className="rounded-2xl bg-white/10 p-3">
+        <div className="rounded-2xl bg-white/10 p-2.5">
           <p className="text-[11px] text-slate-400">Sunset</p>
           <p className="mt-1 text-base font-bold">{weather.sunset}</p>
         </div>
       </div>
-    </seation>
+    </section>
   );
 }
 

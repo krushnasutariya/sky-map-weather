@@ -1,12 +1,5 @@
 import { useEffect } from "react";
-import {
-  MapContainer,
-  Marker,
-  Popup,
-  TileLayer,
-  useMap,
-  useMapEvents,
-} from "react-leaflet";
+import { MapContainer, TileLayer, useMap, useMapEvents } from "react-leaflet";
 import { DEFAULT_ZOOM } from "../utils/constants";
 import AnimatedWeatherIcon from "./AnimatedWeatherIcon";
 
@@ -32,26 +25,30 @@ function MapClickHandler({ onMapClick }) {
   return null;
 }
 
-function WeatherIconOverlay({ position, weather }) {
+function LogoStyleWeatherMarker({ position, weather }) {
   const map = useMap();
 
   useEffect(() => {
-    const updateIconPosition = () => {
+    function updateMarkerPosition() {
       const point = map.latLngToContainerPoint(position);
-      const element = document.getElementById("weather-map-icon");
+      const markerElement = document.getElementById("logo-style-weather-marker");
 
-      if (element) {
-        element.style.left = `${point.x}px`;
-        element.style.top = `${point.y}px`;
+      if (markerElement) {
+        markerElement.style.left = `${point.x}px`;
+        markerElement.style.top = `${point.y}px`;
       }
-    };
+    }
 
-    updateIconPosition();
+    updateMarkerPosition();
 
-    map.on("move zoom", updateIconPosition);
+    map.on("move", updateMarkerPosition);
+    map.on("zoom", updateMarkerPosition);
+    map.on("resize", updateMarkerPosition);
 
     return () => {
-      map.off("move zoom", updateIconPosition);
+      map.off("move", updateMarkerPosition);
+      map.off("zoom", updateMarkerPosition);
+      map.off("resize", updateMarkerPosition);
     };
   }, [map, position]);
 
@@ -61,17 +58,32 @@ function WeatherIconOverlay({ position, weather }) {
 
   return (
     <div
-      id="weather-map-icon"
-      className="pointer-events-none absolute z-[1000] -translate-x-1/2 -translate-y-[120%]"
+      id="logo-style-weather-marker"
+      className="pointer-events-none absolute z-[1000] -translate-x-1/2 -translate-y-[130%]"
     >
-      <div className="scale-90 rounded-full border border-white/20 bg-slate-950/80 p-1.5 shadow-2xl backdrop-blur-xl">
-          <AnimatedWeatherIcon condition={weather.condition} />
+      <div className="relative flex items-center justify-center">
+        <div
+          className="relative h-[58px] w-[58px] -rotate-45 shadow-[0_14px_28px_rgba(15,23,42,0.35)]"
+          style={{
+            borderRadius: "22px 22px 22px 6px",
+            background:
+              "linear-gradient(180deg, rgba(34,197,94,0.95) 0%, rgba(14,165,233,0.98) 100%)",
+            border: "3px solid rgba(255,255,255,0.55)",
+          }}
+        >
+          <div className="absolute inset-[6px] flex items-center justify-center rounded-full bg-sky-900/70 rotate-45 backdrop-blur-xl">
+            <div className="scale-[0.38]">
+              <AnimatedWeatherIcon condition={weather.condition} />
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
   );
 }
 
-function WeatherMap({ position, locationName, weather, onMapClick }) {
+function WeatherMap({ position, weather, onMapClick }) {
   return (
     <section className="relative h-full min-h-0 overflow-hidden rounded-[2rem] border border-white/20 bg-white/10 p-3 shadow-2xl backdrop-blur-xl">
       <div className="absolute left-6 top-6 z-[1000] rounded-2xl border border-white/20 bg-slate-950/75 px-5 py-3 text-white shadow-2xl backdrop-blur-xl">
@@ -98,29 +110,12 @@ function WeatherMap({ position, locationName, weather, onMapClick }) {
       >
         <RecenterMap position={position} />
         <MapClickHandler onMapClick={onMapClick} />
-        <WeatherIconOverlay position={position} weather={weather} />
+        <LogoStyleWeatherMarker position={position} weather={weather} />
 
         <TileLayer
           attribution='&copy; OpenStreetMap contributors &copy; CARTO'
           url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
         />
-
-        <Marker position={position}>
-          <Popup>
-            <div className="min-w-[190px] text-center">
-              <p className="font-semibold">{locationName}</p>
-
-              {weather && (
-                <>
-                  <p className="mt-1 capitalize">{weather.description}</p>
-                  <p className="mt-1 text-lg font-bold">
-                    {weather.temperature}°C
-                  </p>
-                </>
-              )}
-            </div>
-          </Popup>
-        </Marker>
       </MapContainer>
     </section>
   );

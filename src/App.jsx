@@ -121,7 +121,7 @@ function App() {
         <div className="absolute bottom-[-180px] left-1/3 h-[500px] w-[500px] rounded-full bg-indigo-500/20 blur-3xl" />
       </div>
 
-      <div className="relative mx-auto flex h-screen max-w-[1440px] flex-col px-5 py-5 md:px-8">
+      <div className="relative mx-auto flex h-screen max-w-[1440px] flex-col px-5 py-4 md:px-8">
         <header className="mb-4 flex items-end justify-between gap-6">
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.45em] text-sky-300">
@@ -130,12 +130,12 @@ function App() {
         
             <div className="mt-2 flex items-center gap-4">
               <img
-                src="/app-icon.png"
+                src={`${import.meta.env.BASE_URL}app-icon.png`}
                 alt="Sky Map Weather logo"
                 className="h-12 w-12 rounded-2xl object-cover shadow-2xl ring-1 ring-white/20 md:h-16 md:w-16"
               />
 
-              <h1 className="text-4xl font-black tracking-tight md:text-5xl">
+              <h1 className="text-4xl font-black tracking-tight md:text-4xl">
                 Sky Map Weather
               </h1>
             </div>
